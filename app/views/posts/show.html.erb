@@ -1,0 +1,14 @@
+<div class="row justify-content-center">
+    <div class="col-md-12 mt-5">
+      <div class="card">
+        <a href="<%= post_path(@post) %>">
+          <img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="Post Image" />
+        </a>
+        <div class="card-body">
+          <h2 class="card-title"><%= @post.title %></h2>
+          <p class="card-text"><%= @post.body %></p>
+          <p class="card-text"><small class="text-muted">Posted on <%= @post.created_at.strftime("%B %e, %Y") %></small></p>
+        </div>
+      </div>
+    </div>
+  </div>
