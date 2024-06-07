@@ -7,9 +7,16 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 10.times do
-  Post.create(
+  post = Post.create(
     title: Faker::Book.title,
     body: Faker::Lorem.paragraph(sentence_count: 5),
     published_at: Faker::Date.between(from: 2.years.ago, to: Date.today)
   )
+
+  # Create comments for each post
+  3.times do
+    post.comments.create(
+      content: Faker::Lorem.sentence(word_count: 10)
+    )
+  end
 end
