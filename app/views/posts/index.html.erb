@@ -9,7 +9,11 @@
           <div class="small text-muted"><%= post.created_at.strftime("%B %e, %Y") %></div>
           <h2 class="card-title h4"><%= post.title %></h2>
           <p class="card-text"><%= post.body %></p>
-          <a class="btn btn-primary" href="<%= post_path(post) %>">Read more →</a>
+          <div class="row">
+            <a class="btn btn-primary col-6 mx-1" href="<%= post_path(post) %>">Read more →</a>
+            <%= link_to 'Delete', post_path(post), method: :delete, class: 'btn btn-danger col-4', data: { confirm: 'Are you sure you want to delete it?' } %>
+          </div>
+          
         </div>
       </div>
     </div>
