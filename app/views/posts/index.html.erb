@@ -1,0 +1,18 @@
+ <h1>All Posts</h1>
+ <% @posts.each do |post| %>
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <a href="<%= post_path(post) %>">
+          <img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="Post Image" />
+        </a>
+        <div class="card-body">
+          <div class="small text-muted"><%= post.created_at.strftime("%B %e, %Y") %></div>
+          <h2 class="card-title h4"><%= post.title %></h2>
+          <p class="card-text"><%= post.body %></p>
+          <a class="btn btn-primary" href="<%= post_path(post) %>">Read more →</a>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+
