@@ -1,6 +1,6 @@
 # BlogApp
 
-BlogApp is a simple blog application built with Ruby on Rails, using PostgreSQL for the database, and Bootstrap 5 for styling.
+BlogApp is a dynamic blogging platform built with Ruby on Rails 7 and styled with Bootstrap. It serves as a technical test application to demonstrate the implementation of key Rails features. The app uses PostgreSQL for its database, Devise for user authentication, and Faker for generating sample data. BlogApp features rich content management for posts and a commenting system. The application is designed to provide a seamless and responsive user experience.
 
 ## Table of Contents
 
@@ -58,6 +58,7 @@ Set up the database by running:
 ```bash
 rails db:create
 rails db:migrate
+rails db:seed
 ```
 
 ## Running the Application
