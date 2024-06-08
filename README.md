@@ -21,9 +21,10 @@ BlogApp is a dynamic blogging platform built with Ruby on Rails 7 and styled wit
 To get started with the app, clone the repo and then install the needed gems:
 
 ```bash
-- ruby 3.3.2
-- rails 7.0.8
+- Ruby 3.3.2
+- Rails 7.0.8
 - PostgreSQL
+- Node 20.7.0
 ```
 
 ## Installation
