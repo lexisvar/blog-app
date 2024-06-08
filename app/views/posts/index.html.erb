@@ -1,22 +1,23 @@
- <h1>All Posts</h1>
- <% @posts.each do |post| %>
-    <div class="col-md-4 mb-4">
-      <div class="card">
+<div class="row mt-5">
+<h1>All Posts</h1>
+  <% @posts.each do |post| %>
+    <div class="col-md-4 mb-4 d-flex">
+      <div class="card flex-fill">
         <a href="<%= post_path(post) %>">
           <img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="Post Image" />
         </a>
-        <div class="card-body">
+        <div class="card-body d-flex flex-column">
           <div class="small text-muted"><%= post.created_at.strftime("%B %e, %Y") %></div>
           <h2 class="card-title h4"><%= post.title %></h2>
           <p class="card-text"><%= post.body %></p>
-          <div class="row">
-            <a class="btn btn-primary col-6 mx-1" href="<%= post_path(post) %>">Read more →</a>
-            <%= link_to 'Delete', post_path(post), method: :delete, class: 'btn btn-danger col-4', data: { confirm: 'Are you sure you want to delete it?' } %>
+          <div class="mt-auto">
+            <div class="row">
+              <a class="btn btn-primary col-6 mx-1" href="<%= post_path(post) %>">Read more →</a>
+              <%= link_to 'Delete', post_path(post), method: :delete, class: 'btn btn-danger col-4', data: { confirm: 'Are you sure you want to delete it?' } %>
+            </div>
           </div>
-          
         </div>
       </div>
     </div>
   <% end %>
-
-
+</div>
