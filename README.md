@@ -25,6 +25,7 @@ To get started with the app, clone the repo and then install the needed gems:
 - Rails 7.0.8
 - PostgreSQL
 - Node 20.7.0
+- Yarn
 ```
 
 ## Installation
