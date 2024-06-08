@@ -12,9 +12,9 @@ BlogApp is a simple blog application built with Ruby on Rails, using PostgreSQL 
 - [Features](#features)
 - [Usage](#usage)
 - [Authentication](#authentication)
-- [Deployment](#deployment)
 - [Contributing](#contributing)
 - [License](#license)
+- [Credits](#credits)
 
 ## Requirements
 
@@ -22,7 +22,8 @@ To get started with the app, clone the repo and then install the needed gems:
 
 ```bash
 - ruby 3.3.2
-- rails 7
+- rails 7.0.8
+- PostgreSQL
 ```
 
 ## Installation
@@ -30,7 +31,7 @@ To get started with the app, clone the repo and then install the needed gems:
 To get started with the app, clone the repo and then install the needed gems:
 
 ```bash
-git clone https://github.com/your_username/BlogApp.git
+git clone https://github.com/lexisvar/BlogApp.git
 cd BlogApp
 bundle install
 ```
@@ -66,3 +67,55 @@ To start the Rails server, run:
 ```bash
 rails server
 ```
+
+You can then access the application in your browser at http://localhost:3000.
+
+
+## Features
+
+To get started with the app, clone the repo and then install the needed gems:
+
+- User authentication using Devise
+- CRUD operations for blog posts
+- Comments on blog posts
+- Responsive design using Bootstrap 5
+
+## Usage
+
+### Creating a New Post
+
+  1. Navigate to the Posts section. 
+  2. Click on "New Post".
+  3. Fill out the form with the title, body, and publication date.
+  4. Click "Create Post".
+
+### Viewing Posts
+
+  - All posts are listed on the homepage.
+  - Click on a post title to view the details of that post.
+
+### Editing and Deleting Posts
+
+  - Only authenticated users can edit or delete posts. 
+  - Navigate to the post you want to edit or delete and click the respective button.
+
+
+## Contributing
+
+1. Fork the repository.
+2. Create a new branch: git checkout -b my-feature-branch
+3. Make your changes and commit them: git commit -m 'Add some feature'
+4. Push to the branch: git push origin my-feature-branch
+5. Submit a pull request.
+
+## License
+
+This project is licensed under the MIT License. See the LICENSE file for details.
+
+
+## Credits
+
+Thanks for making it easier for me:
+
+
+- [Blog Home - Template](https://github.com/startbootstrap/startbootstrap-blog-home)
