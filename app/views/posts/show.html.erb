@@ -1,28 +1,44 @@
 <div class="row justify-content-center">
-    <div class="col-md-12 mt-5">
-      <div class="card">
-        <a href="<%= post_path(@post) %>">
-          <img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="Post Image" />
-        </a>
-        <div class="card-body">
-          <h2 class="card-title"><%= @post.title %></h2>
-          <p class="card-text"><%= @post.body %></p>
-          <p class="card-text"><small class="text-muted">Posted on <%= @post.created_at.strftime("%B %e, %Y") %></small></p>
-        </div>
-
-        
-
+  <div class="col-md-12 mt-5">
+    <div class="card">
+      <a href="<%= post_path(@post) %>">
+        <img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="Post Image" />
+      </a>
+      <div class="card-body">
+        <h2 class="card-title"><%= @post.title %></h2>
+        <p class="card-text"><%= @post.body %></p>
+        <p class="card-text"><small class="text-muted">Posted on <%= @post.created_at.strftime("%B %e, %Y") %></small></p>
       </div>
 
-      <!-- Comments Section -->
-        <div class="comments-section mt-4">
-          <h4>Comments (<%= @post.comments.count %>)</h4>
-          <% @post.comments.each do |comment| %>
-            <div class="comment mb-3 p-3 border rounded">
-              <p class="mb-1"><%= comment.content %></p>
-              <p class="text-muted small">Commented on <%= comment.created_at.strftime("%B %e, %Y at %l:%M %p") %></p>
-            </div>
-          <% end %>
-        </div>
+      <div class="card-footer">
+        <a class="btn btn-success col-6 mx-1" href="<%= post_path(@post) %>">Edit <span>&#x270E;</span></a>
+      </div>
     </div>
+
+    <!-- Comments Section -->
+    <div class="comments-section mt-4">
+      <h4>Comments (<%= @post.comments.count %>)</h4>
+      <% @post.comments.each do |comment| %>
+        <div class="comment mb-3 p-3 border rounded">
+          <p class="mb-1"><%= comment.content %></p>
+          <p class="text-muted small">Commented on <%= comment.created_at.strftime("%B %e, %Y at %l:%M %p") %></p>
+        </div>
+      <% end %>
+    </div>
+
+    <!-- Comment Box for Logged-in Users -->
+    <% if user_signed_in? %>
+      <div class="comment-box mt-4">
+        <h4>Leave a Comment</h4>
+        <%= form_with(model: [@post, @post.comments.build], local: true) do |form| %>
+          <div class="form-group">
+            <%= form.text_area :content, class: 'form-control', placeholder: 'Enter your comment here...' %>
+          </div>
+          <div class="form-group mt-2">
+            <%= form.submit 'Post Comment', class: 'btn btn-primary' %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
   </div>
+</div>
