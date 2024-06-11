@@ -42,9 +42,20 @@
 
 ### Subir y Gestionar Archivos en S3
 
-- Se creó un bucket S3.
-- Se subió un archivo.
-- Se generó una URL firmada.
+#### Se creó un bucket S3.
+```
+$ aws s3 mb s3://my-bucket-jun-11-2024
+```
+#### Se subió un archivo.
+```
+$ aws s3 cp data/PruebaRubyAndAWS.pdf s3://my-bucket-jun-11-2024
+```
+#### Se generó una URL firmada.
+```
+$ aws s3 presign s3://my-bucket-jun-11-2024/PruebaRubyAndAWS.pdf --expires-in 4800000
+```
+
+Para abrir el archivo de la -> [URL Firmada](https://my-bucket-jun-11-2024.s3.amazonaws.com/PruebaRubyAndAWS.pdf?AWSAccessKeyId=AKIAYRS2DQJJ575N4ZML&Signature=0MNM%2BJLzr%2BIkj69Nt1ZblI7XIqA%3D&Expires=1722900812)
 
 ### Configuración Básica de RDS
 
@@ -79,6 +90,8 @@ $ aws rds create-db-instance \
 
 
 - #### Se verificó que la instancia RDS esté en ejecución.
+
+La contraseña se encuentra en el archivo keys.txt enviado via email.
 
 ```
 $ mysql -h mydbinstance.cvmqeqcuyf3z.us-east-1.rds.amazonaws.com -P 3306 -u admin -p
