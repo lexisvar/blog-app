@@ -13,7 +13,9 @@
           <div class="mt-auto">
             <div class="row">
               <a class="btn btn-primary col-6 mx-1" href="<%= post_path(post) %>">Read more →</a>
-              <%= link_to 'Delete', post_path(post), method: :delete, class: 'btn btn-danger col-4', data: { confirm: 'Are you sure you want to delete it?' } %>
+              <% if user_signed_in? %>
+                <%= link_to 'Delete', post_path(post), method: :delete, class: 'btn btn-danger col-4', data: { confirm: 'Are you sure you want to delete it?' } %>
+              <% end %>
             </div>
           </div>
         </div>
