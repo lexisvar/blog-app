@@ -40,6 +40,12 @@
 - Se creó un Security Group y se autorizó el acceso SSH.
 - Se lanzó una instancia EC2.
 
+Para verificar y acceder a la instancia EC2 es requerido el archivo **blogapp.pem**
+
+```
+$ ssh -i PATH/blogapp.pem ubuntu@ec2-54-91-255-3.compute-1.amazonaws.com
+```
+
 ### Subir y Gestionar Archivos en S3
 
 #### Se creó un bucket S3.
@@ -100,12 +106,52 @@ $ mysql -h mydbinstance.cvmqeqcuyf3z.us-east-1.rds.amazonaws.com -P 3306 -u admi
 ### Implementar un Load Balancer con Auto Scaling
 
 - Se creó un Launch Configuration.
+
+```
+$ aws autoscaling create-launch-configuration \
+  --launch-configuration-name my-launch-config \
+  --image-id [AMI ID] \
+  --instance-type t2.micro \
+  --key-name [KEY_PAIR_NAME] \
+  --security-groups [AUTOSCALLING_SECURITY_G] 
+```
+
 - Se creó un grupo de Auto Scaling.
-- Se configuró el Load Balancer (ELB).
+```
+aws autoscaling create-auto-scaling-group \
+  --auto-scaling-group-name my-auto-scaling-group \
+  --launch-configuration-name my-launch-config \
+  --min-size 1 \
+  --max-size 1 \
+  --desired-capacity 1 \
+  --vpc-zone-identifier [SUBNET_ID]
+```
+
 - Se creó un Target Group.
+```
+aws elbv2 create-target-group \
+  --name my-target-group \
+  --protocol HTTP \
+  --port 80 \
+  --vpc-id [VPC_ID]
+
+```
 - Se registraron instancias en el Target Group.
+```
+aws elbv2 register-targets \
+  --target-group-arn [TARGET_GROUP_ARN] \
+  --targets Id=[INSTANCE_ID]
+```
 - Se creó una política de Auto Scaling.
 
 ## Resumen
 
 Se han completado con éxito todas las tareas según los requisitos de la prueba técnica. El proyecto Ruby on Rails está completamente funcional, incluyendo modelos con relaciones, autenticación y operaciones básicas CRUD. Además, se han completado las tareas de AWS, demostrando competencia en el lanzamiento y gestión de recursos en la nube.
+
+## Notas Generales
+
+- Este documento usa algunas keys que por temas de seguridad, solo se envían através de email.
+
+- En el proceso de deployment se intentó hacer deployment usando Nginx + Passenger, lastimosamente al parece este último es incompatible con la última versión de ubuntu y presentó dificultades en el proceso de deployment. Ahora mismo está en ejecución bajo una instancia screen con el servidor propio de rails (NO en producción)
+
+- Si eres un desarrollador que te interesa poner en ejecución el proyecto RoR todo lo necesario para ello lo encontrarás en el archivo README.md en la raíz del proyecto.
